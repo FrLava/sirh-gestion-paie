@@ -11,6 +11,7 @@ import java.util.stream.Stream;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import dev.paie.entite.BulletinSalaire;
@@ -18,16 +19,7 @@ import dev.paie.entite.Cotisation;
 
 public class JeuxDeDonneesTest {
 
-	private ClassPathXmlApplicationContext context;
-	private BulletinSalaire bulletin1;
-
-	@Before
-	public void onSetup() {
-	
-		context = new ClassPathXmlApplicationContext("jdd-config.xml");
-		bulletin1 = context.getBean("bulletin1", BulletinSalaire.class);
-	
-	}
+@Autowired BulletinSalaire bulletin1;
 	
 	@Test
 	public void test_primeExceptionnelle() {
@@ -95,13 +87,6 @@ public class JeuxDeDonneesTest {
 		equalTo(new BigDecimal("151.67")));
 		assertThat(bulletin1.getRemunerationEmploye().getGrade().getTauxBase(),
 		equalTo(new BigDecimal("11.0984")));
-	}
-	
-	@After
-	public void onExit() {
-
-		context.close();
-
 	}
 
 }

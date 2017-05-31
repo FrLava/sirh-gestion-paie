@@ -9,8 +9,10 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.stereotype.Component;
 
 import dev.paie.util.PaieUtils;
+
 
 public class PaieUtilTest {
 	
