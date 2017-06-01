@@ -45,6 +45,7 @@ public class GradeServiceJdbcTemplate implements GradeService {
 		String sql = "SELECT * FROM grade";
 		return this.jdbcTemplate.query(sql,(rs,rowNumber)-> {
 			Grade g = new Grade();
+			g.setId(rs.getInt("id"));
 			g.setCode(rs.getString("code"));
 			g.setNbHeuresBase(rs.getBigDecimal("nbHeuresBase"));
 			g.setTauxBase(rs.getBigDecimal("tauxBase"));
