@@ -1,5 +1,7 @@
 package dev.paie.entite;
 
+import javax.persistence.Entity;
+
 import org.springframework.stereotype.Component;
 
 @Component

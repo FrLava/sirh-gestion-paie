@@ -1,12 +1,36 @@
 package dev.paie.entite;
 
+import java.math.BigDecimal;
+import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+
+@Entity
 public class Avantage {
 
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
+	
 	private String code;
 	private String nom;
-	private Integer montant;
+	private BigDecimal montant;
+	
+	@ManyToMany(mappedBy="avantages")
+	private List<ProfilRemuneration> listProfilAvantage;
 
+	public Avantage(){}
+	
+	public Avantage(String code,String nom,BigDecimal montant){
+		this.code = code;
+		this.nom = nom;
+		this.montant = montant;
+	}
+	
 	public String getCode() {
 		return code;
 	}
@@ -23,11 +47,11 @@ public class Avantage {
 		this.nom = nom;
 	}
 
-	public Integer getMontant() {
+	public BigDecimal getMontant() {
 		return montant;
 	}
 
-	public void setMontant(Integer montant) {
+	public void setMontant(BigDecimal montant) {
 		this.montant = montant;
 	}
 
