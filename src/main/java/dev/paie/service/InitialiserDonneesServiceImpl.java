@@ -3,6 +3,8 @@ package dev.paie.service;
 import static org.junit.Assert.assertTrue;
 
 import java.time.LocalDate;
+import java.time.temporal.TemporalAdjuster;
+import java.time.temporal.TemporalAdjusters;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -33,31 +35,20 @@ public class InitialiserDonneesServiceImpl implements InitialiserDonneesService 
 	@Autowired ApplicationContext context;
 	@PersistenceContext private EntityManager em;
 	
-	private final BiConsumer<String, Object> PERSIST_OBJECT = (beanName,bean)->em.persist(bean);
-	private List<Periode> pTable = new ArrayList<Periode>();
-	private LocalDate date = LocalDate.of(2017, 01, 01);
-	
 	@Override
 	@Transactional
 	public void initialiser() {
 		
+		final BiConsumer<String, Object> PERSIST_OBJECT = (beanName,bean)->em.persist(bean);
+		LocalDate date = LocalDate.of(LocalDate.now().getYear(), 1, 1);
+		
 		Stream.of(Entreprise.class,Cotisation.class,Grade.class,ProfilRemuneration.class)
 		.forEach(classe -> context.getBeansOfType(classe).forEach(PERSIST_OBJECT));
 		
-		Stream.of(
-				new Periode(LocalDate.of(2017, 1, 1),LocalDate.of(2017, 1, 31)),
-				new Periode(LocalDate.of(2017, 2, 1),LocalDate.of(2017, 2, 28)),
-				new Periode(LocalDate.of(2017, 3, 1),LocalDate.of(2017, 3, 31)),
-				new Periode(LocalDate.of(2017, 4, 1),LocalDate.of(2017, 4, 30)),
-				new Periode(LocalDate.of(2017, 5, 1),LocalDate.of(2017, 5, 31)),
-				new Periode(LocalDate.of(2017, 6, 1),LocalDate.of(2017, 6, 30)),
-				new Periode(LocalDate.of(2017, 7, 1),LocalDate.of(2017, 7, 31)),
-				new Periode(LocalDate.of(2017, 8, 1),LocalDate.of(2017, 8, 31)),
-				new Periode(LocalDate.of(2017, 9, 1),LocalDate.of(2017, 9, 30)),
-				new Periode(LocalDate.of(2017, 10, 1),LocalDate.of(2017, 10, 31)),
-				new Periode(LocalDate.of(2017, 11, 1),LocalDate.of(2017, 11, 30)),
-				new Periode(LocalDate.of(2017, 12, 1),LocalDate.of(2017, 12, 31))
-				).forEach( periode -> em.persist(periode) );
+		for(int i=0;i<12;i++){
+			em.persist(new Periode(date.plusMonths(i),date.plusMonths(i).with(TemporalAdjusters.lastDayOfMonth())));
+		}
+
 	}
 
 }
