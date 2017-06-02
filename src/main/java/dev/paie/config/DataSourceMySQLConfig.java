@@ -1,4 +1,4 @@
-package dev.paie.spring;
+package dev.paie.config;
 
 import javax.sql.DataSource;
 

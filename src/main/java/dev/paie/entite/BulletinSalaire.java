@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 import org.springframework.stereotype.Component;
@@ -18,9 +19,9 @@ public class BulletinSalaire {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	
-	@OneToOne
+	@ManyToOne
 	private RemunerationEmploye remunerationEmploye;
-	@OneToOne
+	@ManyToOne
 	private Periode periode;
 	
 	private BigDecimal primeExceptionnelle;

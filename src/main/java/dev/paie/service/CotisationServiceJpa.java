@@ -14,8 +14,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.Transactional;
 
+import dev.paie.config.JpaConfig;
 import dev.paie.entite.Cotisation;
-import dev.paie.spring.JpaConfig;
 
 @Service
 public class CotisationServiceJpa implements CotisationService {

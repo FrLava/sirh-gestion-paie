@@ -1,4 +1,6 @@
-package dev.paie.spring;
+package dev.paie.config;
+
+import java.util.Properties;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
@@ -31,7 +33,7 @@ public class JpaConfig {
 	public EntityManagerFactory entityManagerFactory(DataSource dataSource) {
 	
 		HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
-		vendorAdapter.setGenerateDdl(true);
+		//vendorAdapter.setGenerateDdl(true);
 		
 		// activer les logs SQL
 		vendorAdapter.setShowSql(true);
@@ -41,6 +43,13 @@ public class JpaConfig {
 		// alternative au persistence.xml
 		factory.setPackagesToScan("dev.paie.entite");
 		factory.setDataSource(dataSource);
+		
+		//Configuration du drop and create pour créer un jeu de données 
+		//au demmarrage et le supprimer à la fin de l'appli
+		Properties jpaProperties = new Properties(); 
+		jpaProperties.setProperty("javax.persistence.schema-generation.database.action", "drop-and-create");
+		factory.setJpaProperties(jpaProperties);
+		
 		factory.afterPropertiesSet();
 		return factory.getObject();
 	

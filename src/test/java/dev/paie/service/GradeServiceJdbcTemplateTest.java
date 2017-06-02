@@ -10,9 +10,9 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import dev.paie.config.DataSourceMySQLConfig;
 import dev.paie.config.ServicesConfig;
 import dev.paie.entite.Grade;
-import dev.paie.spring.DataSourceMySQLConfig;
 import dev.paie.util.JeuxDeDonnesConfig;
 
 @ContextConfiguration(classes = {DataSourceMySQLConfig.class,ServicesConfig.class} )
