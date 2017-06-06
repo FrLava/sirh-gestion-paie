@@ -15,6 +15,7 @@ import org.springframework.stereotype.Component;
 @Entity
 public class BulletinSalaire {
 	
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
@@ -25,6 +26,14 @@ public class BulletinSalaire {
 	private Periode periode;
 	
 	private BigDecimal primeExceptionnelle;
+	
+	public BulletinSalaire(RemunerationEmploye remunerationEmploye, Periode periode, BigDecimal primeExceptionnelle) {
+		this.remunerationEmploye = remunerationEmploye;
+		this.periode = periode;
+		this.primeExceptionnelle = primeExceptionnelle;
+	}
+	
+	public BulletinSalaire() {}
 	
 	public RemunerationEmploye getRemunerationEmploye() {
 		return remunerationEmploye;

@@ -22,6 +22,7 @@ public class Periode {
 	public Periode(LocalDate dateDebut, LocalDate dateFin) {
 		this.dateDebut = dateDebut;
 		this.dateFin = dateFin;
+		
 	}
 	public LocalDate getDateDebut() {
 		return dateDebut;
@@ -41,6 +42,7 @@ public class Periode {
 	public void setId(Integer id) {
 		this.id = id;
 	}
+
 	
 	
 	
