@@ -28,6 +28,7 @@ import dev.paie.entite.Entreprise;
 import dev.paie.entite.Grade;
 import dev.paie.entite.Periode;
 import dev.paie.entite.ProfilRemuneration;
+import dev.paie.entite.RemunerationEmploye;
 
 @Service
 public class InitialiserDonneesServiceImpl implements InitialiserDonneesService {
@@ -42,7 +43,7 @@ public class InitialiserDonneesServiceImpl implements InitialiserDonneesService 
 		final BiConsumer<String, Object> PERSIST_OBJECT = (beanName,bean)->em.persist(bean);
 		LocalDate date = LocalDate.of(LocalDate.now().getYear(), 1, 1);
 		
-		Stream.of(Entreprise.class,Cotisation.class,Grade.class,ProfilRemuneration.class)
+		Stream.of(Entreprise.class,Cotisation.class,Grade.class,ProfilRemuneration.class,RemunerationEmploye.class)
 		.forEach(classe -> context.getBeansOfType(classe).forEach(PERSIST_OBJECT));
 		
 		for(int i=0;i<12;i++){

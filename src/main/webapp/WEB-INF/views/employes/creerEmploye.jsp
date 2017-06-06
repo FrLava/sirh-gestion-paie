@@ -1,6 +1,6 @@
 <%@ include file="../header.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>	
-	<form class="form-horizontal">
+	<form class="form-horizontal" method="POST" action="creer">
 	<fieldset>
 	
 		<!-- Form Name -->
@@ -10,7 +10,7 @@
 		<div class="form-group">
 		  <label class="col-md-4 control-label" for="Matricule">Matricule</label>  
 		  <div class="col-md-4">
-		  <input id="Matricule" name="Matricule" type="text" placeholder="" class="form-control input-md">
+		  <input id="matricule" name="matricule" type="text" placeholder="" class="form-control input-md">
 		    
 		  </div>
 		</div>
@@ -21,7 +21,7 @@
 		  <div class="col-md-4">
 		    <select id="entreprise" name="entreprise" class="form-control">
 		    	<c:forEach items="${ entreprise }" var="entreprise">
-		    		<option>${entreprise.denomination}</option>
+		    		<option value="${ entreprise.id }">${entreprise.denomination}</option>
 		    	</c:forEach>
 		    </select>
 		  </div>
@@ -33,7 +33,7 @@
 		  <div class="col-md-4">
 		    <select id="profil" name="profil" class="form-control">
 		    <c:forEach items="${ profil }" var="profil">
-		    		<option>${profil.code}</option>
+		    		<option value="${ profil.id }">${profil.code}</option>
 		    </c:forEach>
 		    </select>
 		  </div>
@@ -45,7 +45,7 @@
 		  <div class="col-md-4">
 		    <select id="grade" name="grade" class="form-control">
 		    <c:forEach items="${ grade }" var="grade">
-		    		<option>${grade.code}</option>
+		    		<option value="${ grade.id }">${grade.code}</option>
 		    </c:forEach>
 		    </select>
 		  </div>
@@ -55,7 +55,7 @@
 		<div class="form-group">
 		  <label class="col-md-4 control-label" for="add"></label>
 		  <div class="col-md-4">
-		    <button id="add" name="add" class="btn btn-primary">Ajouter</button>
+		    <button type="submit" class="btn btn-primary">Ajouter</button>
 		  </div>
 		</div>
 	

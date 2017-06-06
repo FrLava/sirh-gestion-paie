@@ -11,5 +11,6 @@
 <import resource="classpath:Donnees/entreprises.xml" />
 <import resource="classpath:Donnees/grades.xml" />
 <import resource="classpath:Donnees/profils-remuneration.xml" />
+<import resource="classpath:Donnees/remuneration-employe.xml"/>
 
 </beans>
