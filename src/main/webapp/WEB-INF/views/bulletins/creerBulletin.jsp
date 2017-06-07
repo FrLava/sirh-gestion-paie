@@ -1,5 +1,6 @@
 <%@ include file="../header.jsp" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>	
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>	
 	<form class="form-horizontal" method="POST" action="creer">
 	<fieldset>
 	
@@ -48,6 +49,7 @@
 		</div>
 	
 	</fieldset>
+	<sec:csrfInput/>
 	</form>
 
 <%@ include file="../footer.jsp" %>
